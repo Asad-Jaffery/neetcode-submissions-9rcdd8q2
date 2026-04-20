@@ -1,14 +1,26 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        looked_at = {}
+        # for each number in the array, there is a target we need to look for
+        # goal = target - num[i]
 
+        # for each number, we'll look for the target
+
+        # set
+        # dictionary --> 
+            # number itself
+            # index of that number
+            # {number: index}
+
+        visited = {}
         for i in range(len(nums)):
-            diff = target - nums[i]
+            goal = target - nums[i]
 
-            if diff in looked_at:
-                return [looked_at[diff], i]
-
+            if goal in visited:
+                return [visited[goal], i]
             else:
-                looked_at[nums[i]] = i
-            
+                visited[nums[i]] = i
+        
+
+
+
         
