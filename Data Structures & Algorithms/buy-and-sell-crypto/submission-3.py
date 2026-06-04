@@ -1,20 +1,15 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        # for each time where there is a profit, check to see if its max
+        # if theres a profit, then see if max profit 
 
-        # if no profit, move the right pointer up 
+        # if not, sell left to the right pointer 
 
-
-        l, r = 0, 0
         profit = 0
-
+        l, r = 0, 0
         while r < len(prices):
             if prices[r] - prices[l] > 0:
                 profit = max(profit, prices[r] - prices[l])
-            else: 
+            else:
                 l = r
             r += 1
-        print(l, r)
-        return profit
-
-        
+        return profit 
