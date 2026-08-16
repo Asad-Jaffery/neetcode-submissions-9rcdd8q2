@@ -1,28 +1,35 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        # use a dict to store the value : quantity 
+        # loop through the array, keep a count of each element via dict 
+        
+        # {1: 5, 6: 1, 5: 4} 
 
 
-        # for i in range (k) 
-            # add the max value to the result 
+        # get array of values 
+        # get array of numbers
 
-            # delete that from the dict 
-
-        quantities = {}
-
-        for i in range(len(nums)):
-            if nums[i] in quantities:
-                quantities[nums[i]] += 1
-            else:
-                quantities[nums[i]] = 1
+        # when you select the max, you remove the top k - 1 elements, and return k 
+            # how to get the index of the max? 
+           #  numbers.index(max(numbers))
 
         res = []
+        counts = {}
+
+        for num in nums:
+            if num in counts:
+                counts[num] += 1
+            else: 
+                counts[num] = 1
         
-        for i in range(k):
-            key = max(quantities, key=quantities.get)
-            res.append(key)
-            del quantities[key]
+        keys = list(counts.keys()) # keys as an array
+        values = list(counts.values()) # values as an array
+
+        for i in range(k): 
+            max_index = values.index(max(values))
+
+            res.append(keys[max_index])
+
+            values.pop(max_index) # remove the max element by it's index
+            keys.pop(max_index) # remove the max element by it's index
 
         return res
-
-       
