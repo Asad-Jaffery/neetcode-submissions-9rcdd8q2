@@ -1,39 +1,32 @@
 class Solution:
     def maxArea(self, heights: List[int]) -> int:
 
-        # (r - l) * min(l, r)
-            # r and l are 1 based index
+        # height x width of the box
+        # height = min (2 sides)
 
-        waters = set()
+        # width = abs(left - right side)
 
-        l, r = 1, len(heights)
+
+        # l = 0, r = 1
+
+
+        # while r < max
+        # which one is smaller 
+
+            # if the right side is smaller (or the same), we increment it by 1 
+
+            # if the left side is smaller. we increment by 1, AND if left = right, we increase right by 1 again
+
+
+        l, r = 0, len(heights) - 1
+        area = 0
 
         while l < r:
-            leftHeight = heights[l - 1]
-            rightHeight = heights[r - 1]
-            container_size = (r - l) * min(leftHeight, rightHeight)
+            area = max(area, (min(heights[l], heights[r]) * (r - l)))
 
-            waters.add(container_size)
-
-            if leftHeight <= rightHeight:
-                l += 1
-            else: 
+            if heights[r] <= heights[l]:
                 r -= 1
+            else: 
+                l += 1
         
-        
-        return max(waters)
-
-
-
-
-    
-           
-
-
-        
-
-
-
-
-
-        
+        return area
