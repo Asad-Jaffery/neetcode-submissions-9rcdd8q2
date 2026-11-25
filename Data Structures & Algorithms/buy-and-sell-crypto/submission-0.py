@@ -1,25 +1,17 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        # l pointerr, r pointer
-        # profit = r - l pointers 
-        
-        
-        # we only consider new answer when there is a profit to be made
-        # increase right pointer every time 
-            # if there is NOT a profit, we set the left pointer to the right pointer? 
+        # exhaust all of the possible profit
+        # once u get to a point with no proifit, make l = r 
 
-
-        # we do this until the right pointer reaches the end of the array
-
-        profit = 0
-        l, r = 0, 0
-
-        while r <= len(prices) - 1:
-            if prices[r] > prices[l]: # there is a potential new profit
-                profit = max(profit, prices[r] - prices[l])
+        max_profit = buy = 0
+        for sell in range(len(prices)):
+            if prices[sell] - prices[buy] > 0:
+                max_profit = max(max_profit, prices[sell] - prices[buy])
             else: 
-                l = r
-            r += 1
-        return profit 
+                buy = sell
+        
+        return max_profit
+
+
 
         
