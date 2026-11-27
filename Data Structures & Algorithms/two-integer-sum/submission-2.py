@@ -1,15 +1,18 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        looked_at = {} # {nums[i]: i}
+        # target - curr_num = what we're looking for
+
+        # if what we're looking for is in a hashmap:
+            # we found answer 
+
+        # dict {num: index}
+
+        hashmap = {}
         for i in range(len(nums)):
-            diff = target - nums[i]
-            if diff in looked_at:
-                return [looked_at[diff], i]
+            possible_answer = target - nums[i]
+            if target - possible_answer in hashmap:
+                return [hashmap[target - possible_answer], i]
             else: 
-                looked_at[nums[i]] = i
+                hashmap[possible_answer] = i
 
-
-
-
-
-
+        
